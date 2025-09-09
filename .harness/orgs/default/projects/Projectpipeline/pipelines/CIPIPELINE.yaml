@@ -1,0 +1,52 @@
+pipeline:
+  name: CI-PIPELINE
+  identifier: CIPIPELINE
+  projectIdentifier: Projectpipeline
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Github_Connector
+        build: <+input>
+  stages:
+    - stage:
+        name: Build-Stage
+        identifier: BuildStage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            override: true
+          buildIntelligence:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Bash
+                    command: |-
+                      mvn -B clean package
+                      mvn -B test
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: DockerHubConnector
+                    repo: shamamumtaz/project
+                    tags:
+                      - v1.0.0
+                    dockerfile: DockerFile
+                    context: .
