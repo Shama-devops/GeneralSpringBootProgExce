@@ -45,7 +45,7 @@ pipeline:
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: DockerHubConnector
-                    repo: shamamumtaz/project/
+                    repo: shamamumtaz/project
                     tags:
                       - v1.0
                     dockerfile: DockerFile
