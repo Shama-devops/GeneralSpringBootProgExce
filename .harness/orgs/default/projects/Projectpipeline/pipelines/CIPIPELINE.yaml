@@ -41,11 +41,11 @@ pipeline:
                       mvn -B test
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
+                  name: BuildAndPushDockerRegistry
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
                     connectorRef: DockerHubConnector
-                    repo: shamamumtaz/project
+                    repo: shamamumtaz/springboot-sample-repo
                     tags:
                       - v1.0
                     dockerfile: DockerFile
