@@ -1,0 +1,14 @@
+inputSet:
+  name: branch-name
+  identifier: branchname
+  orgIdentifier: default
+  projectIdentifier: cicdproject
+  pipeline:
+    identifier: GeneralSpringBootProgExce_pipeline
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: development-patch-harness
